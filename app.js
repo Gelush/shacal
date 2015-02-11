@@ -3,7 +3,7 @@ var googleConfig = {
   clientID: '45657096402-bpjdte3rqkit3pe3p89d2qo5fc399b11.apps.googleusercontent.com',
   clientSecret: '-JPxaGxrc4b8pgM0HfFKj7_m',
   calendarId: 'gelus2k@gmail.com',
-  redirectURL: 'https://localhost:2002/auth'
+  redirectURL: 'http://localhost:2002/auth'
 };
 
 // Dependency setup
@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
     });
     res.redirect(url);
   } else {
-
+	  
       // Format today's date
       var today = moment().format('YYYY-MM-DD') + 'T';
 
@@ -47,6 +47,20 @@ app.get('/', function(req, res) {
           console.log(err);
         } else {
 
+		  // Retrieve
+		  var MongoClient = require('mongodb').MongoClient;
+		  
+		  // Connect to the db
+			MongoClient.connect("mongodb://localhost:27017/shacal", function(err, db) {
+			  if(err) { return console.dir(err); }
+
+			  var collection = db.collection('events');
+			  
+			  collection.insert(events.items, { w: 0 });
+
+			});
+			
+			
           // Send our JSON response back to the browser
           console.log('Successfully fetched events');
           res.send(events);
