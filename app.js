@@ -10,6 +10,7 @@ var googleConfig = {
 var express = require('express'),
   moment = require('moment'),
   google = require('googleapis');
+  uploadical = require('./uploadical');
 
 // Initialization
 var app = express(),
@@ -63,7 +64,7 @@ app.get('/', function(req, res) {
 			
           // Send our JSON response back to the browser
           console.log('Successfully fetched events');
-          res.send(events);
+          res.send(events + '<a href="http://localhost:3000">Upload iCal</a>');
         }
       });
   }
