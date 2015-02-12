@@ -64,7 +64,7 @@ app.get('/', function(req, res) {
 			
           // Send our JSON response back to the browser
           console.log('Successfully fetched events');
-          res.send(events + '<a href="http://localhost:3000">Upload iCal</a>');
+          res.send('<a href="http://localhost:2003">Back</a>');
         }
       });
   }
