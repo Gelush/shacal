@@ -62,17 +62,9 @@ app.get('/', function(req, res) {
 			  var collection2 = db.collection('event');
 			  for(var i in events.items)
 				{
-					if (events.items[i].status != 'confirmed'){
-					 collection2.insert({summary: events.items[i].summary, start_date: events.items[i].start, end_date: events.items[i].end, type: 0}, { w: 0 });
-					} else {
-					collection2.find({type: 1}, {start_date: { $lt: events.items[i].start}}, {end_date:{ $gt: events.items[i].start}}).toArray(function(err, items) {
-						if (items.length = 0) {
-							collection2.insert({summary: events.items[i].summary, start_date: events.items[i].start, end_date: events.items[i].end, type: 1}, { w: 0 });
-						}
-						db.close();
-						}
-						
-				    }
+					 //collection2.insert({text: events.items[i].summary, start_date: "ISO_DATE(" + events.items[i].start + ")", end_date: "ISO_DATE(" + events.items[i].end + ")", type: 0}, { w: 0 });
+					 //collection2.insert({text: events.items[i].summary, start_date: events.items[i].start.date, end_date:  events.items[i].end.date, type: 0}, { w: 0 });
+					 collection2.insert({text: events.items[i].summary, start_date: new Date(events.items[i].start.date), end_date: new Date(events.items[i].end.date), type: 0}, { w: 0 });
 			    }
 
 			   });

@@ -61,7 +61,7 @@ app.post('/', function(req, res){
 
 			  var collection2 = db.collection2('event');
 			  
-			  collection.insert({text:"" + summary + "", startTime:"" + start_date + "", end_date:"" + endTime + "", type: 0}, { w: 1}, function(err, records){
+			  collection.insert({text:"" + summary + "", startTime: new Date("" + start_date + ""), end_date: new DatE("" + endTime + ""), type: 0}, { w: 1}, function(err, records){
 	                console.log("Record added as "+records[0]._id);
 				});
 
