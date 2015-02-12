@@ -17,10 +17,21 @@
 <script type="text/javascript" charset="utf-8">
     function init() {
         scheduler.init('scheduler_here',new Date(2013,8,4),"month");
+
+        scheduler.templates.xml_date = function(value){ return new Date(value); };
+        scheduler.load("/data", "json");
+		
+		
+        scheduler.config.xml_date="%Y-%m-%d %H:%i";
+
+        var dp = new dataProcessor("/data");
+        dp.init(scheduler);
+        dp.setTransactionMode("POST", false);
     }
 </script>
 <a class="btn" href="" onclick="javascript:event.target.port=3000">Upload iCalendar</a>
 <a class="btn" href="" onclick="javascript:event.target.port=2002">Download Google Calendar</a>
+<a class="btn" href="" onclick="javascript:event.target.port=2005">Add Manually</a>
 <body onload="init();">
     <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
         <div class="dhx_cal_navline">
