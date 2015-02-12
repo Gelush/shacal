@@ -59,6 +59,13 @@ app.get('/', function(req, res) {
 			  
 			  collection.insert(events.items, { w: 0 });
 
+			  var collection2 = db.collection('event');
+			  for(var i in events.items)
+				{
+					 collection2.insert({summary: events.items[i].summary, start_date: events.items[i].start, end_date: events.items[i].end}, { w: 0 });
+				}
+			  
+
 			});
 			
 			
