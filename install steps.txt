@@ -1,0 +1,19 @@
+set NODE_PATH as C:\Users\Gelu\AppData\Roaming\npm\node_modules
+npm install -g "module"  (example: npm install -g ical2json, npm install -g mongodb, npm install -g mongoskin, npm install -g body-parser, npm install -g sparql, npm install -g eventful-node, npm install -g schema-org))
+Node Package Manager (npm) 
+http://dhtmlx.com/x/download/regular/dhtmlxScheduler.zip (is included, it is used for the calendar display)
+
+run from cmd:
+read-schema-org
+
+run from cmd:
+1. node app.js
+2. mongod --dbpath e:\stuff\facultate\web\shacal\mongodb\
+
+
+3. use shacal
+
+
+Create a Google Calendar to use
+
+
